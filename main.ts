@@ -42,7 +42,6 @@ basic.forever(function on_forever() {
     let current_humidity = Math.idiv(weatherbit.humidity(), 1024)
     let current_pressure = Math.idiv(weatherbit.pressure(), 25600)
     current_rain = Math.round(weatherbit.rain())
-    let current_time = input.runningTime()
     // Pauses execution of the function for the specified ms
     pause(1000)
     // For troubleshooting purposes, so we can see how long it takes per run
@@ -50,5 +49,5 @@ basic.forever(function on_forever() {
     // Board wouldn't write to the SD card if this line isn't here
     serial.redirect(SerialPin.P15, SerialPin.P14, BaudRate.BaudRate9600)
     //  If "???" is displayed, wind direction is unknown!
-    serial.writeLine("" + current_time + "," + ("" + current_WindSpeed) + "," + ("" + current_WindDirection_List) + "," + ("" + current_temp) + "," + ("" + current_humidity) + "," + ("" + current_pressure) + "," + ("" + current_rain) + "\n")
+    serial.writeLine("" + input.runningTime() + "," + ("" + current_WindSpeed) + "," + ("" + current_WindDirection_List) + "," + ("" + current_temp) + "," + ("" + current_humidity) + "," + ("" + current_pressure) + "," + ("" + current_rain) + "\n")
 })

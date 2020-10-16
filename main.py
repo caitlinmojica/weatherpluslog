@@ -47,8 +47,6 @@ def on_forever():
     current_pressure = (Math.idiv(weatherbit.pressure(), 25600))
     current_rain = (Math.round(weatherbit.rain()))
 
-    current_time = input.running_time()
-
     #Pauses execution of the function for the specified ms
     pause(1000) 
     #For troubleshooting purposes, so we can see how long it takes per run
@@ -56,6 +54,6 @@ def on_forever():
     #Board wouldn't write to the SD card if this line isn't here
     serial.redirect(SerialPin.P15, SerialPin.P14, BaudRate.BAUD_RATE9600)
     # If "???" is displayed, wind direction is unknown!
-    serial.write_line(str(current_time) + "," + str(current_WindSpeed) + "," + str(current_WindDirection_List) + "," + str(current_temp) + "," + str(current_humidity) + "," + str(current_pressure) + "," + str(current_rain) + "\n")
+    serial.write_line(str(input.running_time()) + "," + str(current_WindSpeed) + "," + str(current_WindDirection_List) + "," + str(current_temp) + "," + str(current_humidity) + "," + str(current_pressure) + "," + str(current_rain) + "\n")
 
 basic.forever(on_forever)
